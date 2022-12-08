@@ -85,11 +85,13 @@ source /etc/environment
 
 log_info "Clone Product repository"
 git clone https://${GIT_USER}:${GIT_PASS}@$PRODUCT_REPOSITORY --branch $PRODUCT_REPOSITORY_BRANCH --single-branch
+
+CURRENT_DIRECTORY=$(pwd)
 cd $PRODUCT_REPOSITORY_NAME
 mvn clean install -Dmaven.test.skip=true
 mv -f ./modules/distribution/product/target/$PRODUCT_PACK_NAME.zip $TESTGRID_DIR/
 unzip -q $TESTGRID_DIR/$PRODUCT_PACK_NAME.zip -d $TESTGRID_DIR/
-cd ../
+cd CURRENT_DIRECTORY
 
 log_info "Exporting JDK"
 install_jdk ${JDK_TYPE}
