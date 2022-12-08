@@ -87,7 +87,7 @@ log_info "Clone Product repository"
 git clone https://${GIT_USER}:${GIT_PASS}@$PRODUCT_REPOSITORY --branch $PRODUCT_REPOSITORY_BRANCH --single-branch
 cd $PRODUCT_REPOSITORY_NAME
 mvn clean install -Dmaven.test.skip=true
-mv -f ./modules/distribution/target/$PRODUCT_PACK_NAME.zip $TESTGRID_DIR/
+mv -f ./modules/distribution/product/target/$PRODUCT_PACK_NAME.zip $TESTGRID_DIR/
 
 log_info "Exporting JDK"
 install_jdk ${JDK_TYPE}
