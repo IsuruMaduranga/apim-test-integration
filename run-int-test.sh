@@ -89,6 +89,7 @@ cd $PRODUCT_REPOSITORY_NAME
 mvn clean install -Dmaven.test.skip=true
 mv -f ./modules/distribution/product/target/$PRODUCT_PACK_NAME.zip $TESTGRID_DIR/
 unzip -q $TESTGRID_DIR/$PRODUCT_PACK_NAME.zip -d $TESTGRID_DIR/
+cd ../
 
 log_info "Exporting JDK"
 install_jdk ${JDK_TYPE}
